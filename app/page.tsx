@@ -1,35 +1,22 @@
 import { Navbar } from "@/components/landing/Navbar";
+import { LandingShell } from "@/components/landing/Loader";
+import { CursorGlow } from "@/components/landing/CursorGlow";
 import { Hero } from "@/components/landing/Hero";
-import { ProductShowcase } from "@/components/landing/ProductShowcase";
-import { AttendanceSection } from "@/components/landing/AttendanceSection";
-import { HardwareSection } from "@/components/landing/HardwareSection";
-import { StudentExperience } from "@/components/landing/StudentExperience";
-import { FacultyExperience } from "@/components/landing/FacultyExperience";
-import { AISection } from "@/components/landing/AISection";
-import { AnalyticsSection } from "@/components/landing/AnalyticsSection";
-import { SecuritySection } from "@/components/landing/SecuritySection";
-import { ArchitectureSection } from "@/components/landing/ArchitectureSection";
-import { MobileCTA } from "@/components/landing/MobileCTA";
-import { FinalCTA } from "@/components/landing/FinalCTA";
+import { Manifesto, Chapters, Finale } from "@/components/landing/Story";
 import { Footer } from "@/components/landing/Footer";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#f7faf7] text-[#1a2b2b]">
-      <Navbar />
-      <Hero />
-      <ProductShowcase />
-      <AttendanceSection />
-      <HardwareSection />
-      <StudentExperience />
-      <FacultyExperience />
-      <AISection />
-      <AnalyticsSection />
-      <SecuritySection />
-      <ArchitectureSection />
-      <MobileCTA />
-      <FinalCTA />
-      <Footer />
-    </main>
+    <LandingShell>
+      <main className="relative min-h-screen bg-[#f7faf7] text-[#1a2b2b] overflow-x-clip">
+        <CursorGlow />
+        <Navbar />
+        <Hero />
+        <Manifesto />
+        <Chapters />
+        <Finale />
+        <Footer />
+      </main>
+    </LandingShell>
   );
 }

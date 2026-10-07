@@ -1,61 +1,125 @@
 "use client";
 
-import { FadeUp, SectionLabel, GradientText, Button } from "@/components/ui/primitives";
+import { useRef } from "react";
+import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
+import { Button } from "@/components/ui/primitives";
+import { EASE } from "./editorial";
 import { HeroVisual } from "./HeroVisual";
 
-export function Hero() {
+function HeroLine({
+  children,
+  delay,
+  className = "",
+}: {
+  children: React.ReactNode;
+  delay: number;
+  className?: string;
+}) {
+  const reduced = useReducedMotion();
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden pt-24 pb-16 bg-[#f7faf7]">
-      <div className="absolute inset-0 bg-grid-pattern opacity-60" />
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[420px] bg-[#0fa3a3]/[0.08] rounded-full blur-[120px]" />
+    <span className="block overflow-hidden pb-[0.09em] -mb-[0.09em]">
+      <motion.span
+        className={`block will-change-transform ${className}`}
+        initial={{ y: reduced ? 0 : "112%" }}
+        animate={{ y: "0%" }}
+        transition={{ duration: reduced ? 0 : 1, delay, ease: EASE as unknown as [number, number, number, number] }}
+      >
+        {children}
+      </motion.span>
+    </span>
+  );
+}
 
-      <div className="relative mx-auto max-w-7xl w-full px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          <div>
-            <FadeUp delay={0.1}>
-              <SectionLabel className="mb-6">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#0fa3a3]" />
-                Built for modern campuses
-              </SectionLabel>
-            </FadeUp>
+export function Hero() {
+  const ref = useRef<HTMLElement>(null);
+  const reduced = useReducedMotion();
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
+  const titleY = useTransform(scrollYProgress, [0, 1], [0, reduced ? 0 : 110]);
+  const visualY = useTransform(scrollYProgress, [0, 1], [0, reduced ? 0 : -50]);
+  const fade = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
 
-            <FadeUp delay={0.2}>
-              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[4.2rem] font-bold tracking-tight leading-[1.05] text-[#1a2b2b]">
-                Your campus,
-                <br />
-                <GradientText as="span">connected</GradientText> and
-                <br />
-                intelligent.
-              </h1>
-            </FadeUp>
+  return (
+    <section ref={ref} className="relative overflow-hidden bg-[#f7faf7] pt-28 md:pt-36 pb-10 md:pb-14">
+      <div
+        aria-hidden
+        className="absolute inset-0 opacity-80"
+        style={{
+          backgroundImage: "radial-gradient(circle at 1px 1px, rgba(15,163,163,0.09) 1px, transparent 0)",
+          backgroundSize: "28px 28px",
+          maskImage: "radial-gradient(ellipse 90% 70% at 50% 20%, black 30%, transparent 75%)",
+          WebkitMaskImage: "radial-gradient(ellipse 90% 70% at 50% 20%, black 30%, transparent 75%)",
+        }}
+      />
+      <div aria-hidden className="absolute -top-32 left-1/2 h-[420px] w-[820px] -translate-x-1/2 rounded-full bg-[#0fa3a3]/[0.09] blur-[130px]" />
 
-            <FadeUp delay={0.35}>
-              <p className="mt-6 max-w-lg text-base sm:text-lg text-[#6b7f7e] leading-relaxed">
-                Venthen brings attendance, students, faculty, devices, analytics,
-                and intelligent automation together in one secure platform.
-              </p>
-            </FadeUp>
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <motion.div
+          className="flex flex-wrap items-center gap-3"
+          initial={{ opacity: 0, y: reduced ? 0 : 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+        >
+          <span className="inline-flex items-center gap-2 rounded-full border border-[#dce9e2] bg-[#eaf6f4] px-4 py-1.5 text-xs font-semibold text-[#0c7c7c]">
+            <span className="h-1.5 w-1.5 rounded-full bg-[#0fa3a3]" />
+            Venthen — campus infrastructure
+          </span>
+          <span className="text-xs font-medium uppercase tracking-[0.22em] text-[#9db3b1]">
+            Attendance · Students · Faculty · AI
+          </span>
+        </motion.div>
 
-            <FadeUp delay={0.45}>
-              <div className="mt-8 flex flex-col sm:flex-row gap-3">
-                <Button variant="primary" arrow href="#cta" className="text-base px-7 py-3.5">
-                  Get Started
-                </Button>
-                <Button variant="secondary" href="#features" className="text-base px-7 py-3.5">
-                  Explore Venthen
-                </Button>
-              </div>
-            </FadeUp>
+        <motion.h1
+          style={{ y: titleY, opacity: fade }}
+          className="mt-8 font-bold leading-[0.92] tracking-[-0.045em] text-[#1a2b2b] text-[15.5vw] sm:text-[11vw] lg:text-[7rem] xl:text-[8rem]"
+        >
+          <HeroLine delay={0.25}>YOUR CAMPUS,</HeroLine>
+          <HeroLine delay={0.37} className="text-[#0fa3a3]">
+            CONNECTED
+          </HeroLine>
+          <HeroLine delay={0.49}>AND INTELLIGENT.</HeroLine>
+        </motion.h1>
 
-            <FadeUp delay={0.55}>
-              <p className="mt-8 text-sm text-[#6b7f7e]">
-                Built for students • faculty • institutions
-              </p>
-            </FadeUp>
-          </div>
-
-          <HeroVisual />
+        <div className="mt-8 md:mt-10 grid gap-8 lg:grid-cols-12 lg:items-end">
+          <motion.p
+            className="max-w-md text-base md:text-lg leading-relaxed text-[#6b7f7e] lg:col-span-4"
+            initial={{ opacity: 0, y: reduced ? 0 : 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.7 }}
+          >
+            Venthen brings attendance, students, faculty, devices, analytics, and
+            intelligent automation together — one calm platform for the campus.
+          </motion.p>
+          <motion.div
+            className="flex flex-wrap items-center gap-3 lg:col-span-4"
+            initial={{ opacity: 0, y: reduced ? 0 : 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.82 }}
+          >
+            <Button variant="primary" arrow href="#cta" className="px-7 py-3.5 text-base">
+              Get Started
+            </Button>
+            <Button variant="secondary" href="#story" className="px-7 py-3.5 text-base">
+              See the story
+            </Button>
+          </motion.div>
+          <motion.div
+            className="hidden lg:flex lg:col-span-4 items-center justify-end gap-6 text-right"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.7, delay: 0.95 }}
+          >
+            <div>
+              <p className="text-2xl font-bold text-[#1a2b2b]">01 — 06</p>
+              <p className="mt-1 text-xs uppercase tracking-[0.2em] text-[#9db3b1]">Chapters below</p>
+            </div>
+            <div className="h-12 w-px bg-[#dce9e2]" />
+            <p className="max-w-[150px] text-xs leading-relaxed text-[#6b7f7e]">
+              Scroll for an editorial walkthrough
+            </p>
+          </motion.div>
         </div>
+
+
       </div>
     </section>
   );
