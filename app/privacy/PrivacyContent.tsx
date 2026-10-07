@@ -2,50 +2,50 @@ import { CONTACT_EMAIL, LAST_UPDATED, TOC_ITEMS } from "./data";
 
 function H2({ id, children }: { id: string; children: string }) {
   return (
-    <h2 id={id} className="text-2xl font-bold text-white mt-12 mb-4 pb-2 border-b border-zinc-800/50">
+    <h2 id={id} className="text-2xl font-bold text-[#1a2b2b] mt-12 mb-4 pb-2 border-b border-[#dce9e2]">
       {children}
     </h2>
   );
 }
 
 function H3({ children }: { children: string }) {
-  return <h3 className="text-lg font-semibold text-white mt-6 mb-3">{children}</h3>;
+  return <h3 className="text-lg font-semibold text-[#1a2b2b] mt-6 mb-3">{children}</h3>;
 }
 
 function P({ children }: { children: React.ReactNode }) {
-  return <p className="text-zinc-300 leading-relaxed mb-4">{children}</p>;
+  return <p className="text-[#4a5f5e] leading-relaxed mb-4">{children}</p>;
 }
 
 function Strong({ children }: { children: string }) {
-  return <strong className="text-white font-medium">{children}</strong>;
+  return <strong className="text-[#1a2b2b] font-medium">{children}</strong>;
 }
 
 function UL({ children }: { children: React.ReactNode }) {
-  return <ul className="list-disc pl-6 space-y-2 text-zinc-300 mb-4">{children}</ul>;
+  return <ul className="list-disc pl-6 space-y-2 text-[#4a5f5e] mb-4">{children}</ul>;
 }
 
 export function PrivacyContent() {
   return (
-    <main className="pt-24 pb-16 px-4 sm:px-6 lg:px-8">
+    <main className="pt-24 pb-16 px-4 sm:px-6 lg:px-8 bg-[#f7faf7] min-h-screen">
       <div className="mx-auto max-w-3xl">
         <div className="mb-2">
-          <p className="text-xs font-medium text-orange-400/80 uppercase tracking-wider">Legal</p>
+          <p className="text-xs font-medium text-[#0c7c7c]/80 uppercase tracking-wider">Legal</p>
         </div>
-        <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-white">Privacy Policy</h1>
-        <p className="mt-4 text-zinc-400 leading-relaxed">
+        <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#1a2b2b]">Privacy Policy</h1>
+        <p className="mt-4 text-[#6b7f7e] leading-relaxed">
           Your privacy matters to us. This policy explains how Venthen collects,
           uses, stores, and protects information when you use our services.
         </p>
-        <p className="mt-3 text-sm text-zinc-500">
-          Last updated: <strong className="text-zinc-300">{LAST_UPDATED}</strong>
+        <p className="mt-3 text-sm text-[#6b7f7e]">
+          Last updated: <strong className="text-[#4a5f5e]">{LAST_UPDATED}</strong>
         </p>
 
-        <nav className="mt-10 rounded-2xl border border-zinc-800/60 bg-[#0f0f0f] p-6">
-          <h2 className="text-sm font-semibold text-zinc-400 uppercase tracking-wider mb-4">Contents</h2>
+        <nav className="mt-10 rounded-2xl border border-[#dce9e2] bg-white p-6">
+          <h2 className="text-sm font-semibold text-[#6b7f7e] uppercase tracking-wider mb-4">Contents</h2>
           <ol className="space-y-2 text-sm">
             {TOC_ITEMS.map(([id, label]) => (
               <li key={id}>
-                <a href={`#${id}`} className="text-zinc-400 hover:text-orange-400 transition-colors">{label}</a>
+                <a href={`#${id}`} className="text-[#6b7f7e] hover:text-[#0c7c7c] transition-colors">{label}</a>
               </li>
             ))}
           </ol>
@@ -109,12 +109,12 @@ export function PrivacyContent() {
         <H2 id="mobile-permissions">3. Mobile App Permissions</H2>
         <P>The Venthen Android application may request the following device permissions. Each permission serves a specific purpose within the Services.</P>
         <div className="overflow-x-auto mb-4">
-          <table className="w-full text-sm text-zinc-300 border-collapse">
+          <table className="w-full text-sm text-[#4a5f5e] border-collapse">
             <thead>
-              <tr className="border-b border-zinc-800/50 text-left">
-                <th className="py-2 pr-4 font-semibold text-zinc-400">Permission</th>
-                <th className="py-2 pr-4 font-semibold text-zinc-400">Purpose</th>
-                <th className="py-2 font-semibold text-zinc-400">Required</th>
+              <tr className="border-b border-[#dce9e2] text-left">
+                <th className="py-2 pr-4 font-semibold text-[#6b7f7e]">Permission</th>
+                <th className="py-2 pr-4 font-semibold text-[#6b7f7e]">Purpose</th>
+                <th className="py-2 font-semibold text-[#6b7f7e]">Required</th>
               </tr>
             </thead>
             <tbody>
@@ -124,11 +124,11 @@ export function PrivacyContent() {
                 ["Camera", "May be used for scanning QR codes for attendance or device provisioning if enabled by your institution.", "Optional"],
                 ["Storage", "Used to cache data for offline access where supported.", "Optional"],
               ].map(([perm, purpose, required]) => (
-                <tr key={perm} className="border-b border-zinc-800/30">
-                  <td className="py-3 pr-4 font-medium text-white">{perm}</td>
+                <tr key={perm} className="border-b border-[#dce9e2]">
+                  <td className="py-3 pr-4 font-medium text-[#1a2b2b]">{perm}</td>
                   <td className="py-3 pr-4">{purpose}</td>
                   <td className="py-3">
-                    <span className={required === "Yes" ? "text-xs bg-orange-500/15 text-orange-400 px-2 py-0.5 rounded-full" : "text-xs bg-zinc-800 text-zinc-500 px-2 py-0.5 rounded-full"}>{required}</span>
+                    <span className={required === "Yes" ? "text-xs bg-[#e8f3e8] text-[#0c7c7c] px-2 py-0.5 rounded-full" : "text-xs bg-zinc-800 text-[#6b7f7e] px-2 py-0.5 rounded-full"}>{required}</span>
                   </td>
                 </tr>
               ))}
@@ -171,8 +171,8 @@ export function PrivacyContent() {
         </UL>
         <P>These providers process data on behalf of Venthen and are contractually obligated to handle data securely. For more information, please refer to the privacy policies of the respective providers:</P>
         <UL>
-          <li><a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener noreferrer" className="text-orange-400 hover:text-orange-300 underline">Firebase Privacy and Security</a></li>
-          <li><a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="text-orange-400 hover:text-orange-300 underline">Google Privacy Policy</a></li>
+          <li><a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener noreferrer" className="text-[#0c7c7c] hover:text-[#0c7c7c] underline">Firebase Privacy and Security</a></li>
+          <li><a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="text-[#0c7c7c] hover:text-[#0c7c7c] underline">Google Privacy Policy</a></li>
         </UL>
 
         <H2 id="data-sharing">8. How We Share Information</H2>
@@ -241,17 +241,17 @@ export function PrivacyContent() {
 
         <H2 id="contact">17. Contact Us</H2>
         <P>If you have questions about this Privacy Policy, wish to exercise your data rights, or need to request account deletion, please contact us at:</P>
-        <div className="rounded-xl border border-zinc-800/60 bg-[#0f0f0f] p-5 mt-4">
-          <p className="text-sm text-zinc-400 mb-1">Email</p>
-          <a href={`mailto:${CONTACT_EMAIL}`} className="text-orange-400 hover:text-orange-300 font-medium">{CONTACT_EMAIL}</a>
+        <div className="rounded-xl border border-[#dce9e2] bg-white p-5 mt-4">
+          <p className="text-sm text-[#6b7f7e] mb-1">Email</p>
+          <a href={`mailto:${CONTACT_EMAIL}`} className="text-[#0c7c7c] hover:text-[#0c7c7c] font-medium">{CONTACT_EMAIL}</a>
         </div>
-        <div className="rounded-xl border border-zinc-800/60 bg-[#0f0f0f] p-5 mt-3">
-          <p className="text-sm text-zinc-400 mb-1">Website</p>
-          <a href="https://venthen.dev" className="text-orange-400 hover:text-orange-300 font-medium">https://venthen.dev</a>
+        <div className="rounded-xl border border-[#dce9e2] bg-white p-5 mt-3">
+          <p className="text-sm text-[#6b7f7e] mb-1">Website</p>
+          <a href="https://venthen.dev" className="text-[#0c7c7c] hover:text-[#0c7c7c] font-medium">https://venthen.dev</a>
         </div>
 
-        <div className="mt-16 pt-8 border-t border-zinc-800/50">
-          <p className="text-xs text-zinc-600">&copy; 2026 Venthen. All rights reserved.</p>
+        <div className="mt-16 pt-8 border-t border-[#dce9e2]">
+          <p className="text-xs text-[#9db3b1]">&copy; 2026 Venthen. All rights reserved.</p>
         </div>
       </div>
     </main>

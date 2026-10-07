@@ -41,10 +41,10 @@ export function SecuritySection() {
     <Section id="security">
       <FadeUp>
         <SectionLabel className="mb-4">Security</SectionLabel>
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white">
+        <h2 className="text-3xl sm:text-4xl md:text-[2.75rem] font-bold tracking-tight text-[#1a2b2b]">
           Built with <GradientText as="span">security in mind.</GradientText>
         </h2>
-        <p className="mt-4 max-w-xl text-zinc-400 text-base">
+        <p className="mt-4 max-w-xl text-[#6b7f7e] text-base">
           Venthen is designed with security engineering principles at its core —
           protecting academic data and campus infrastructure from the ground up.
         </p>
@@ -53,14 +53,14 @@ export function SecuritySection() {
       <div className="mt-16 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {principles.map((item, i) => (
           <FadeUp key={item.title} delay={i * 0.08}>
-            <div className="group rounded-2xl border border-zinc-800/60 bg-[#0f0f0f] p-5 transition-all duration-300 hover:border-zinc-700/80 hover:bg-[#111]">
+            <div className="group rounded-2xl border border-[#dce9e2] bg-white p-5 transition-all duration-200 hover:border-[#0fa3a3]/30 hover:bg-[#f0f7f0]">
               <div className="flex items-center gap-3 mb-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-zinc-800/50 group-hover:bg-orange-500/10 group-hover:border group-hover:border-orange-500/20 transition-all">
-                  <item.icon size={18} className="text-orange-400/70 group-hover:text-orange-400 transition-colors" />
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#f0f7f0] group-hover:bg-[#e8f3e8] group-hover:border group-hover:border-[#dce9e2] transition-all">
+                  <item.icon size={18} className="text-[#0c7c7c]/70 group-hover:text-[#0c7c7c] transition-colors" />
                 </div>
-                <h4 className="text-sm font-semibold text-white">{item.title}</h4>
+                <h4 className="text-sm font-semibold text-[#1a2b2b]">{item.title}</h4>
               </div>
-              <p className="text-sm text-zinc-500 leading-relaxed">{item.desc}</p>
+              <p className="text-sm text-[#6b7f7e] leading-relaxed">{item.desc}</p>
             </div>
           </FadeUp>
         ))}

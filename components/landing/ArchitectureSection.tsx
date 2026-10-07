@@ -9,15 +9,15 @@ const layers = [
     label: "Student App",
     sub: "Mobile",
     icon: Smartphone,
-    color: "border-blue-500/30 bg-blue-500/5",
-    iconColor: "text-blue-400",
+    color: "border-[#dce9e2] bg-[#f0f7f0]",
+    iconColor: "text-[#0c7c7c]",
   },
   {
     label: "Faculty App",
     sub: "Web & Mobile",
     icon: Smartphone,
-    color: "border-blue-500/30 bg-blue-500/5",
-    iconColor: "text-blue-400",
+    color: "border-[#dce9e2] bg-[#f0f7f0]",
+    iconColor: "text-[#0c7c7c]",
   },
 ];
 
@@ -37,19 +37,19 @@ export function ArchitectureSection() {
     <Section id="about">
       <FadeUp>
         <SectionLabel className="mb-4">Architecture</SectionLabel>
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#1a2b2b]">
           A <GradientText as="span">connected platform</GradientText>,
           <br />
           not a collection of tools.
         </h2>
-        <p className="mt-4 max-w-xl text-zinc-400 text-base">
+        <p className="mt-4 max-w-xl text-[#6b7f7e] text-base">
           Venthen is built as a unified platform where every component — mobile apps,
           backend services, attendance devices, and AI — works together.
         </p>
       </FadeUp>
 
       <FadeUp delay={0.2}>
-        <div className="mt-16 rounded-3xl border border-zinc-800/60 bg-[#0f0f0f] p-8 md:p-12">
+        <div className="mt-16 rounded-[22px] border border-[#dce9e2] bg-white p-8 md:p-12">
           <div className="max-w-2xl mx-auto space-y-6">
             {/* Top: Apps */}
             <div className="grid grid-cols-2 gap-4">
@@ -60,8 +60,8 @@ export function ArchitectureSection() {
                   className={`rounded-2xl border ${item.color} p-4 text-center`}
                 >
                   <item.icon size={18} className={`mx-auto mb-2 ${item.iconColor}`} />
-                  <p className="text-sm font-semibold text-white">{item.label}</p>
-                  <p className="text-[11px] text-zinc-500 mt-0.5">{item.sub}</p>
+                  <p className="text-sm font-semibold text-[#1a2b2b]">{item.label}</p>
+                  <p className="text-[11px] text-[#6b7f7e] mt-0.5">{item.sub}</p>
                 </motion.div>
               ))}
             </div>
@@ -70,7 +70,7 @@ export function ArchitectureSection() {
             <div className="flex justify-center gap-4">
               {[0, 1].map((i) => (
                 <div key={i} className="flex flex-col items-center">
-                  <div className="h-6 w-px bg-gradient-to-b from-orange-500/40 to-transparent" />
+                  <div className="h-6 w-px bg-gradient-to-b from-[#0fa3a3]/40 to-transparent" />
                 </div>
               ))}
             </div>
@@ -81,11 +81,11 @@ export function ArchitectureSection() {
                 <motion.div
                   key={item.label}
                   whileHover={{ y: -2 }}
-                  className="rounded-2xl border border-zinc-700/50 bg-white/[0.02] p-4 text-center"
+                  className="rounded-2xl border border-[#dce9e2] bg-white/[0.02] p-4 text-center"
                 >
-                  <item.icon size={18} className="mx-auto mb-2 text-orange-400/60" />
-                  <p className="text-sm font-semibold text-white">{item.label}</p>
-                  <p className="text-[11px] text-zinc-500 mt-0.5">{item.desc}</p>
+                  <item.icon size={18} className="mx-auto mb-2 text-[#0c7c7c]/60" />
+                  <p className="text-sm font-semibold text-[#1a2b2b]">{item.label}</p>
+                  <p className="text-[11px] text-[#6b7f7e] mt-0.5">{item.desc}</p>
                 </motion.div>
               ))}
             </div>
@@ -94,7 +94,7 @@ export function ArchitectureSection() {
             <div className="flex justify-center gap-4">
               {[0, 1].map((i) => (
                 <div key={i} className="flex flex-col items-center">
-                  <div className="h-6 w-px bg-gradient-to-b from-orange-500/40 to-transparent" />
+                  <div className="h-6 w-px bg-gradient-to-b from-[#0fa3a3]/40 to-transparent" />
                 </div>
               ))}
             </div>
@@ -105,11 +105,11 @@ export function ArchitectureSection() {
                 <motion.div
                   key={item.label}
                   whileHover={{ y: -2 }}
-                  className="rounded-2xl border border-orange-500/20 bg-orange-500/[0.03] p-4 text-center"
+                  className="rounded-2xl border border-[#dce9e2] bg-[#0fa3a3]/[0.03] p-4 text-center"
                 >
-                  <item.icon size={18} className="mx-auto mb-2 text-orange-400" />
-                  <p className="text-sm font-semibold text-white">{item.label}</p>
-                  <p className="text-[11px] text-zinc-500 mt-0.5">{item.desc}</p>
+                  <item.icon size={18} className="mx-auto mb-2 text-[#0c7c7c]" />
+                  <p className="text-sm font-semibold text-[#1a2b2b]">{item.label}</p>
+                  <p className="text-[11px] text-[#6b7f7e] mt-0.5">{item.desc}</p>
                 </motion.div>
               ))}
             </div>

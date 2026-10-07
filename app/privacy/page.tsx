@@ -16,10 +16,10 @@ export const metadata: Metadata = {
 
 export default function PrivacyPage() {
   return (
-    <>
+    <div className="bg-[#f7faf7] min-h-screen text-[#1a2b2b]">
       <Navbar />
       <PrivacyContent />
       <Footer />
-    </>
+    </div>
   );
 }

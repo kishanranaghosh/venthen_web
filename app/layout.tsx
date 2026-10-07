@@ -63,7 +63,7 @@ export default function RootLayout({ children }: any) {
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full bg-[#080808] text-[#fafafa]">
+      <body className="min-h-full bg-[#f7faf7] text-[#1a2b2b]">
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

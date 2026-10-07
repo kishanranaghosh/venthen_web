@@ -58,17 +58,19 @@ export function Navbar() {
         initial={{ y: -80 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled ? "border-b border-zinc-800/50 glass" : "bg-transparent"
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-200 ${
+          scrolled
+            ? "border-b border-[#dce9e2] bg-white/85 backdrop-blur-xl shadow-[0_4px_20px_-8px_rgba(26,43,43,0.12)]"
+            : "bg-[#f7faf7]/80 backdrop-blur-md"
         }`}
       >
         <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
           {/* Logo */}
           <a
             href="#"
-            className="flex items-center gap-2.5 font-semibold text-white text-lg tracking-tight"
+            className="flex items-center gap-2.5 font-semibold text-[#1a2b2b] text-lg tracking-tight"
           >
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-orange-500 to-amber-500 text-xs font-bold text-white">
+            <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-[#0fa3a3] text-sm font-bold text-white">
               V
             </div>
             Venthen
@@ -80,7 +82,7 @@ export function Navbar() {
               <button
                 key={link.label}
                 onClick={() => scrollTo(link.href)}
-                className="px-3.5 py-2 text-sm text-zinc-400 hover:text-white transition-colors rounded-lg hover:bg-white/[0.04]"
+                className="px-3.5 py-2 text-sm font-medium text-[#6b7f7e] hover:text-[#1a2b2b] transition-colors rounded-full hover:bg-[#e8f3e8]"
               >
                 {link.label}
               </button>
@@ -96,7 +98,7 @@ export function Navbar() {
 
           {/* Mobile hamburger */}
           <button
-            className="md:hidden flex items-center justify-center h-10 w-10 rounded-lg text-zinc-400 hover:text-white hover:bg-white/[0.04] transition-colors"
+            className="md:hidden flex items-center justify-center h-10 w-10 rounded-full text-[#6b7f7e] hover:text-[#1a2b2b] hover:bg-[#e8f3e8] transition-colors"
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label={mobileOpen ? "Close menu" : "Open menu"}
           >
@@ -116,7 +118,7 @@ export function Navbar() {
             className="fixed inset-0 z-40 md:hidden"
           >
             <div
-              className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+              className="absolute inset-0 bg-[#1a2b2b]/20 backdrop-blur-sm"
               onClick={() => setMobileOpen(false)}
             />
             <motion.div
@@ -124,18 +126,18 @@ export function Navbar() {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", damping: 25, stiffness: 300 }}
-              className="absolute right-0 top-0 bottom-0 w-72 bg-[#0e0e0e] border-l border-zinc-800/50 p-6 pt-20 flex flex-col gap-2"
+              className="absolute right-0 top-0 bottom-0 w-72 bg-white border-l border-[#dce9e2] p-6 pt-20 flex flex-col gap-2 shadow-xl"
             >
               {navLinks.map((link) => (
                 <button
                   key={link.label}
                   onClick={() => scrollTo(link.href)}
-                  className="w-full text-left px-4 py-3 text-base text-zinc-300 hover:text-white hover:bg-white/[0.04] rounded-xl transition-colors"
+                  className="w-full text-left px-4 py-3 text-base font-medium text-[#1a2b2b] hover:bg-[#f0f7f0] rounded-2xl transition-colors"
                 >
                   {link.label}
                 </button>
               ))}
-              <div className="mt-4 pt-4 border-t border-zinc-800/50 flex flex-col gap-3">
+              <div className="mt-4 pt-4 border-t border-[#dce9e2] flex flex-col gap-3">
                 <Button
                   variant="secondary"
                   className="w-full justify-center"

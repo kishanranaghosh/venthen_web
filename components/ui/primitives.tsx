@@ -67,7 +67,7 @@ interface SectionLabelProps {
 export function SectionLabel({ children, className = "" }: SectionLabelProps) {
   return (
     <div
-      className={`inline-flex items-center gap-2 rounded-full border border-orange-500/20 bg-orange-500/5 px-4 py-1.5 text-xs font-medium text-orange-400 ${className}`}
+      className={`inline-flex items-center gap-2 rounded-full border border-[#dce9e2] bg-[#eaf6f4] px-4 py-1.5 text-xs font-semibold text-[#0c7c7c] ${className}`}
     >
       {children}
     </div>
@@ -87,7 +87,7 @@ export function GradientText({
 }: GradientTextProps) {
   return (
     <Tag
-      className={`bg-gradient-to-r from-orange-500 to-amber-400 bg-clip-text text-transparent ${className}`}
+      className={`text-[#0fa3a3] ${className}`}
     >
       {children}
     </Tag>
@@ -112,15 +112,15 @@ export function Button({
   arrow = false,
 }: ButtonProps) {
   const base =
-    "inline-flex items-center gap-2 rounded-xl px-6 py-3 text-sm font-medium transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-orange-500/50 focus:ring-offset-2 focus:ring-offset-[#080808]";
+    "inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[#0fa3a3]/40 focus:ring-offset-2 focus:ring-offset-[#f7faf7] active:scale-[0.98]";
 
   const variants = {
     primary:
-      "bg-orange-500 text-white hover:bg-orange-400 hover:shadow-lg hover:shadow-orange-500/20",
+      "bg-[#0fa3a3] text-white hover:bg-[#0c8a8a] hover:shadow-[0_6px_24px_-8px_rgba(15,163,163,0.5)]",
     secondary:
-      "border border-zinc-700 bg-white/[0.03] text-zinc-200 hover:border-zinc-500 hover:bg-white/[0.06]",
+      "border border-[#dce9e2] bg-white text-[#1a2b2b] hover:border-[#0fa3a3]/40 hover:bg-[#f0f7f0]",
     ghost:
-      "text-zinc-400 hover:text-white",
+      "text-[#6b7f7e] hover:text-[#1a2b2b] hover:bg-[#e8f3e8]",
   };
 
   const Component = href ? "a" : "button";
