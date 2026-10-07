@@ -36,39 +36,49 @@ export function SplitLetters({
   as?: "span" | "div";
 }) {
   const reduced = usePrefersReducedMotion();
-  const letters = text.split("");
+  const words = text.split(" ");
   const Cmp = Tag === "div" ? motion.div : motion.span;
+  let letterIndex = 0;
   return (
     <Cmp
-      className={`inline-block ${className}`}
+      className={`inline ${className}`}
+      style={{ wordBreak: "normal", overflowWrap: "normal" }}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: "-10% 0px" }}
       aria-label={text}
       role="text"
     >
-      {letters.map((ch, i) => (
-        <span
-          key={i}
-          aria-hidden
-          className="inline-block overflow-hidden align-bottom pb-[0.08em] -mb-[0.08em]"
-        >
-          <motion.span
-            className={`inline-block will-change-transform ${letterClassName}`}
-            variants={{
-              hidden: { y: reduced ? 0 : "110%", rotate: 0 },
-              visible: {
-                y: "0%",
-                transition: {
-                  duration: reduced ? 0 : 0.7,
-                  delay: delay + i * stagger,
-                  ease: EASE as unknown as [number, number, number, number],
-                },
-              },
-            }}
-          >
-            {ch === " " ? "\u00A0" : ch}
-          </motion.span>
+      {words.map((word, wi) => (
+        <span key={wi} className="inline-block whitespace-nowrap" style={{ wordBreak: "normal", overflowWrap: "normal" }}>
+          {word.split("").map((ch, li) => {
+            const i = letterIndex++;
+            return (
+              <span
+                key={li}
+                aria-hidden
+                className="inline-block overflow-hidden align-bottom pb-[0.08em] -mb-[0.08em]"
+              >
+                <motion.span
+                  className={`inline-block will-change-transform ${letterClassName}`}
+                  variants={{
+                    hidden: { y: reduced ? 0 : "110%", rotate: 0 },
+                    visible: {
+                      y: "0%",
+                      transition: {
+                        duration: reduced ? 0 : 0.7,
+                        delay: delay + i * stagger,
+                        ease: EASE as unknown as [number, number, number, number],
+                      },
+                    },
+                  }}
+                >
+                  {ch}
+                </motion.span>
+              </span>
+            );
+          })}
+          {wi < words.length - 1 ? <span aria-hidden className="inline-block">&nbsp;</span> : null}
         </span>
       ))}
     </Cmp>

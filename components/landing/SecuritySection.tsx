@@ -7,7 +7,7 @@ const principles = [
   {
     icon: Shield,
     title: "Secure Authentication",
-    desc: "Multi-factor authentication protects all user accounts — students, faculty, and administrators.",
+    desc: "Multi-factor authentication protects all user accounts students, faculty, and administrators.",
   },
   {
     icon: Users,

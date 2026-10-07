@@ -12,7 +12,7 @@ export default function Home() {
         <CursorGlow />
         <Navbar />
         <Hero />
-        <Manifesto />
+
         <Chapters />
         <Finale />
         <Footer />

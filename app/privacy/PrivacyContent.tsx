@@ -81,7 +81,7 @@ export function PrivacyContent() {
         <P>In order to provide the Services, Venthen processes academic information associated with your account, which may include:</P>
         <UL>
           <li>Course and class enrollment information</li>
-          <li>Attendance records (date, time, and method — e.g., RFID, fingerprint, or manual)</li>
+          <li>Attendance records (date, time, and method e.g., RFID, fingerprint, or manual)</li>
           <li>Class schedules and timetables</li>
           <li>Grades, quiz results, and assignment data (if configured by your institution)</li>
           <li>Faculty-class and student-class associations</li>
@@ -119,7 +119,7 @@ export function PrivacyContent() {
             </thead>
             <tbody>
               {[
-                ["Internet / Network Access", "Required for all app functionality — connecting to the Venthen platform to retrieve and send data.", "Yes"],
+                ["Internet / Network Access", "Required for all app functionality connecting to the Venthen platform to retrieve and send data.", "Yes"],
                 ["Notifications", "Used to deliver attendance alerts, class updates, announcements, and academic notifications via push.", "Optional"],
                 ["Camera", "May be used for scanning QR codes for attendance or device provisioning if enabled by your institution.", "Optional"],
                 ["Storage", "Used to cache data for offline access where supported.", "Optional"],

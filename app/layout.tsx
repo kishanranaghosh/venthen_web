@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Venthen — Intelligent Campus Management Platform",
+  title: "Venthen Intelligent Campus Management Platform",
   description:
     "Venthen connects students, faculty, attendance infrastructure, analytics, and intelligent campus workflows in one modern platform. Built for modern campuses.",
   keywords: [
@@ -40,13 +40,13 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://venthen.dev",
     siteName: "Venthen",
-    title: "Venthen — Intelligent Campus Management Platform",
+    title: "Venthen Intelligent Campus Management Platform",
     description:
       "Venthen connects students, faculty, attendance infrastructure, analytics, and intelligent campus workflows in one modern platform.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Venthen — Intelligent Campus Management Platform",
+    title: "Venthen Intelligent Campus Management Platform",
     description:
       "Venthen connects students, faculty, attendance infrastructure, analytics, and intelligent campus workflows in one modern platform.",
   },

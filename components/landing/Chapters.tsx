@@ -16,12 +16,14 @@ export function GiantWord({
 }) {
   return (
     <section className="relative overflow-hidden bg-[#f7faf7] py-16 md:py-24">
-      <DriftWord
-        text={word}
-        className={`whitespace-nowrap text-center font-bold leading-none tracking-[-0.05em] text-[18vw] md:text-[13vw] ${
-          teal ? "text-[#0fa3a3]/[0.10]" : "text-[#1a2b2b]/[0.06]"
-        }`}
-      />
+      <div className="overflow-hidden px-2">
+        <DriftWord
+          text={word}
+          className={`whitespace-nowrap text-center font-bold leading-none tracking-[-0.05em] text-[clamp(2.5rem,12vw,11rem)] ${
+            teal ? "text-[#0fa3a3]/[0.10]" : "text-[#1a2b2b]/[0.06]"
+          }`}
+        />
+      </div>
       <div className="relative mx-auto -mt-[6vw] md:-mt-[4vw] max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
         <Reveal>
           <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#0c7c7c]">{caption}</p>
@@ -64,7 +66,7 @@ export function Chapter({
                 <span className="text-[11px] font-medium uppercase tracking-[0.24em] text-[#9db3b1]">{tagline}</span>
               </div>
             </Reveal>
-            <h2 className="mt-6 font-bold leading-[0.9] tracking-[-0.04em] text-[#1a2b2b] text-[16vw] sm:text-7xl lg:text-[5.2rem]">
+            <h2 className="mt-6 font-bold leading-[0.9] tracking-[-0.04em] text-[#1a2b2b] text-[clamp(2.2rem,10vw,5.2rem)] sm:text-7xl lg:text-[5.2rem] whitespace-nowrap" style={{ wordBreak: "normal", overflowWrap: "normal" }}>
               <SplitLetters text={word} stagger={0.04} />
             </h2>
             <MaskedLines

@@ -4,11 +4,11 @@ import { Footer } from "@/components/landing/Footer";
 import { PrivacyContent } from "./PrivacyContent";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy — Venthen",
+  title: "Privacy Policy Venthen",
   description:
     "Learn how Venthen collects, uses, protects, and manages information across its mobile application and services.",
   openGraph: {
-    title: "Privacy Policy — Venthen",
+    title: "Privacy Policy Venthen",
     description:
       "Learn how Venthen collects, uses, protects, and manages information across its mobile application and services.",
   },
