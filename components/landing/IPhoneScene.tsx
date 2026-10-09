@@ -340,12 +340,24 @@ export function IPhoneScene() {
               clamp(1 - window.scrollY / (viewportHeight * 0.55), 0, 1),
             );
           } else {
-            const featureIsVisible = markers.some(({ name, element }) => {
+            const stageRect = stage.current.getBoundingClientRect();
+            const visibleFeature = markers.find(({ name, element }) => {
               if (name === "hero") return false;
               const rect = element.getBoundingClientRect();
               return rect.bottom > 0 && rect.top < viewportHeight;
             });
-            stage.current.style.opacity = featureIsVisible ? "1" : "0";
+            const content = visibleFeature
+              ? Array.from(visibleFeature.element.children).find(
+                  (child) => getComputedStyle(child).position !== "absolute",
+                )
+              : null;
+            const contentRect = content?.getBoundingClientRect();
+            const contentOverlapsStage =
+              contentRect !== undefined &&
+              contentRect.bottom > stageRect.top &&
+              contentRect.top < stageRect.bottom;
+            stage.current.style.opacity =
+              visibleFeature && !contentOverlapsStage ? "1" : "0";
           }
         }
       }
