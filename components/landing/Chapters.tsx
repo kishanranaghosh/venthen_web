@@ -15,7 +15,7 @@ export function GiantWord({
   teal?: boolean;
 }) {
   return (
-    <section className="relative overflow-hidden bg-[#f7faf7] py-16 md:py-24">
+    <section className="relative z-0 overflow-hidden bg-transparent py-16 md:py-24">
       <div className="overflow-hidden px-2">
         <DriftWord
           text={word}
@@ -41,6 +41,7 @@ export function Chapter({
   copy,
   points,
   visual,
+  phoneScene,
   flip = false,
   id,
 }: {
@@ -50,48 +51,58 @@ export function Chapter({
   copy: string;
   points: string[];
   visual: React.ReactNode;
+  phoneScene: string;
   flip?: boolean;
   id?: string;
 }) {
   return (
-    <section id={id} className="relative overflow-hidden bg-[#f7faf7] py-20 md:py-32">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className={`grid gap-10 lg:grid-cols-12 lg:gap-8 ${flip ? "" : ""}`}>
-          {/* left: index + title */}
-          <div className={`lg:col-span-5 ${flip ? "lg:order-2 lg:col-start-8" : ""}`}>
-            <Reveal>
-              <div className="flex items-baseline gap-4">
-                <span className="text-sm font-bold tracking-[0.2em] text-[#0fa3a3]">{index}</span>
-                <span className="h-px flex-1 bg-[#dce9e2]" />
-                <span className="text-[11px] font-medium uppercase tracking-[0.24em] text-[#9db3b1]">{tagline}</span>
-              </div>
-            </Reveal>
-            <h2 className="mt-6 font-bold leading-[0.9] tracking-[-0.04em] text-[#1a2b2b] text-[clamp(2.2rem,10vw,5.2rem)] sm:text-7xl lg:text-[5.2rem] whitespace-nowrap" style={{ wordBreak: "normal", overflowWrap: "normal" }}>
-              <SplitLetters text={word} stagger={0.04} />
-            </h2>
-            <MaskedLines
-              className="mt-6 max-w-md text-lg md:text-xl leading-snug text-[#1a2b2b] font-medium"
-              stagger={0.14}
-            >
-              {[copy]}
-            </MaskedLines>
-            <Reveal delay={0.2} className="mt-8">
-              <ul className="space-y-3">
-                {points.map((p) => (
-                  <li key={p} className="flex items-start gap-3 text-[0.95rem] text-[#4a5f5e]">
-                    <span className="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#0fa3a3]" />
-                    {p}
-                  </li>
-                ))}
-              </ul>
-            </Reveal>
-          </div>
-          {/* right: visual */}
-          <div className={`lg:col-span-6 ${flip ? "lg:order-1 lg:col-start-1" : "lg:col-start-7"}`}>
-            <Reveal delay={0.15} y={48}>
-              {visual}
-            </Reveal>
-          </div>
+    <section
+      id={id}
+      data-phone-scene={phoneScene}
+      className="relative z-[2] flex min-h-[100svh] items-center bg-transparent pb-16 pt-[calc(4rem+60svh)] md:pb-24 md:pt-[calc(4rem+44svh)] lg:py-20"
+    >
+      <div className="relative z-[2] mx-auto grid w-full max-w-7xl grid-cols-1 px-4 sm:px-6 lg:grid-cols-2 lg:gap-x-12 lg:px-8">
+        <div
+          className={`max-w-[42rem] ${
+            flip ? "lg:col-start-2 lg:ml-auto" : ""
+          } lg:row-start-1 lg:w-[88%]`}
+        >
+          <Reveal>
+            <div className="flex items-baseline gap-4">
+              <span className="text-sm font-bold tracking-[0.2em] text-[#0fa3a3]">
+                {index}
+              </span>
+              <span className="h-px flex-1 bg-[#dce9e2]" />
+              <span className="text-[11px] font-medium uppercase tracking-[0.24em] text-[#9db3b1]">
+                {tagline}
+              </span>
+            </div>
+          </Reveal>
+          <h2 className="mt-6 max-w-full break-keep font-bold leading-[0.92] tracking-[-0.045em] text-[#1a2b2b] text-[clamp(2.5rem,9vw,4.3rem)] md:text-[clamp(3.5rem,5vw,4.7rem)]">
+            <SplitLetters text={word} stagger={0.04} />
+          </h2>
+          <MaskedLines
+            className="mt-6 max-w-md text-lg font-medium leading-snug text-[#1a2b2b] md:text-xl"
+            stagger={0.14}
+          >
+            {[copy]}
+          </MaskedLines>
+          <Reveal delay={0.2} className="mt-8">
+            <ul className="space-y-3">
+              {points.map((p) => (
+                <li
+                  key={p}
+                  className="flex items-start gap-3 text-[0.95rem] text-[#4a5f5e]"
+                >
+                  <span className="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#0fa3a3]" />
+                  {p}
+                </li>
+              ))}
+            </ul>
+          </Reveal>
+          <Reveal delay={0.15} y={32} className="mt-10">
+            {visual}
+          </Reveal>
         </div>
       </div>
     </section>
@@ -103,7 +114,7 @@ export function Marquee({ items }: { items: string[] }) {
   const reduced = useReducedMotion();
   const row = [...items, ...items, ...items];
   return (
-    <div className="relative overflow-hidden border-y border-[#dce9e2] bg-[#eef6ef] py-4">
+    <div className="relative z-0 overflow-hidden border-y border-[#dce9e2] bg-[#eef6ef] py-4">
       <motion.div
         className="flex w-max items-center gap-8 whitespace-nowrap"
         animate={reduced ? {} : { x: ["0%", "-33.333%"] }}
@@ -128,34 +139,46 @@ export function Stats() {
     { value: 1, suffix: "", label: "Connected campus", note: "One platform" },
   ];
   return (
-    <section className="relative bg-[#f7faf7] py-16 md:py-24">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <Reveal>
-          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#0c7c7c]">In numbers</p>
-        </Reveal>
-        <div className="mt-8 grid gap-px overflow-hidden rounded-[22px] border border-[#dce9e2] bg-[#dce9e2] sm:grid-cols-3">
-          {stats.map((s) => (
-            <div key={s.label} className="bg-white px-8 py-10 md:py-12">
-              <CountUp
-                to={s.value}
-                suffix={s.suffix}
-                className="block text-6xl md:text-7xl font-bold tracking-tight text-[#1a2b2b]"
-              />
-              <p className="mt-3 text-sm font-semibold uppercase tracking-[0.18em] text-[#0c7c7c]">{s.label}</p>
-              <p className="mt-1 text-sm text-[#6b7f7e]">{s.note}</p>
-            </div>
-          ))}
-        </div>
-        <Reveal delay={0.15}>
-          <div className="mt-8 flex flex-wrap items-center gap-4">
-            <Button variant="primary" arrow href="#cta">
-              Get Started
-            </Button>
-            <Button variant="secondary" href="#features">
-              Explore the platform
-            </Button>
+    <section
+      data-phone-scene="stats"
+      className="relative z-0 bg-transparent pb-16 pt-[calc(4rem+34svh)] md:pb-24 md:pt-[calc(4rem+34svh)] lg:py-24"
+    >
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:grid lg:grid-cols-2 lg:gap-x-12 lg:px-8">
+        <div className="lg:col-start-1 lg:row-start-1 lg:w-full">
+          <Reveal>
+            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#0c7c7c]">
+              In numbers
+            </p>
+          </Reveal>
+          <div className="mt-8 grid gap-px overflow-hidden rounded-[22px] border border-[#dce9e2] bg-[#dce9e2] sm:grid-cols-3">
+            {stats.map((s) => (
+              <div
+                key={s.label}
+                className="bg-white px-4 py-8 md:px-6 md:py-12 lg:px-4"
+              >
+                <CountUp
+                  to={s.value}
+                  suffix={s.suffix}
+                  className="block text-5xl font-bold tracking-tight text-[#1a2b2b] md:text-6xl"
+                />
+                <p className="mt-3 text-sm font-semibold uppercase tracking-[0.18em] text-[#0c7c7c]">
+                  {s.label}
+                </p>
+                <p className="mt-1 text-sm text-[#6b7f7e]">{s.note}</p>
+              </div>
+            ))}
           </div>
-        </Reveal>
+          <Reveal delay={0.15}>
+            <div className="mt-8 flex flex-wrap items-center gap-4">
+              <Button variant="primary" arrow href="#cta">
+                Get Started
+              </Button>
+              <Button variant="secondary" href="#features">
+                Explore the platform
+              </Button>
+            </div>
+          </Reveal>
+        </div>
       </div>
     </section>
   );

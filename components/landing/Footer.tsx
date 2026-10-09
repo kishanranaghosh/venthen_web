@@ -8,7 +8,7 @@ const footerNav = {
 
 export function Footer() {
   return (
-    <footer className="border-t border-[#dce9e2] bg-[#f7faf7]">
+    <footer className="relative z-10 border-t border-[#dce9e2] bg-[#f7faf7]">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Brand */}

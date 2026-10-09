@@ -291,6 +291,8 @@ export function Chapters() {
       />
       <div id="features">
         <Chapter
+          id="platform"
+          phoneScene="attendance"
           index="01"
           word="ATTENDANCE"
           tagline="Infrastructure"
@@ -308,6 +310,8 @@ export function Chapters() {
         caption="Students · Schedules · Progress · Alerts"
       />
       <Chapter
+        id="students"
+        phoneScene="students"
         index="02"
         word="STUDENTS"
         tagline="Mobile-first"
@@ -326,6 +330,8 @@ export function Chapters() {
         teal
       />
       <Chapter
+        id="faculty"
+        phoneScene="faculty"
         index="03"
         word="FACULTY"
         tagline="Teach, not administrate"
@@ -336,12 +342,15 @@ export function Chapters() {
           "Trends & at-risk alerts",
         ]}
         visual={<FacultyVisual />}
+        flip
       />
       <GiantWord
         word="INTELLIGENCE"
         caption="Ask · Analyze · Act with Venthen AI"
       />
       <Chapter
+        id="ai"
+        phoneScene="intelligence"
         index="04"
         word="INTELLIGENCE"
         tagline="Venthen AI"
@@ -352,10 +361,11 @@ export function Chapters() {
           "Authorized actions, safely",
         ]}
         visual={<IntelligenceVisual />}
-        flip
       />
       <Stats />
       <Chapter
+        id="security"
+        phoneScene="security"
         index="05"
         word="SECURE"
         tagline="Trust"
@@ -375,51 +385,55 @@ export function Finale() {
   return (
     <section
       id="cta"
-      className="relative overflow-hidden bg-[#f7faf7] py-24 md:py-36"
+      data-phone-scene="cta"
+      className="relative z-[2] flex min-h-[100svh] items-center overflow-hidden bg-transparent pb-20 pt-[calc(4rem+38svh)] md:pb-24 lg:py-20"
     >
       <div
         aria-hidden
         className="absolute left-1/2 top-1/2 h-[480px] w-[820px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#0fa3a3]/[0.08] blur-[130px]"
       />
-      <div className="relative mx-auto max-w-5xl px-4 text-center sm:px-6">
-        <SplitLetters
-          text="BEGIN"
-          className="text-[11px] font-bold uppercase tracking-[0.5em] text-[#0c7c7c]"
-          stagger={0.05}
-        />
-        <h2 className="mx-auto mt-6 font-bold leading-[0.92] tracking-[-0.04em] text-[#1a2b2b] text-[clamp(2.4rem,9vw,6rem)] sm:text-7xl lg:text-8xl" style={{ wordBreak: "normal", overflowWrap: "normal" }}>
-          <span className="block overflow-hidden whitespace-nowrap pb-[0.08em]" style={{ wordBreak: "normal", overflowWrap: "normal" }}>
-            <span className="block whitespace-nowrap">Ready to modernize</span>
-          </span>
-          <span className="block overflow-hidden whitespace-nowrap pb-[0.1em]" style={{ wordBreak: "normal", overflowWrap: "normal" }}>
-            <span className="block whitespace-nowrap text-[#0fa3a3]">your campus?</span>
-          </span>
-        </h2>
-        <Reveal delay={0.15}>
-          <p className="mx-auto mt-6 max-w-xl text-base md:text-lg leading-relaxed text-[#6b7f7e]">
-            Bring attendance, academic workflows, and intelligent campus tools
-            together with Venthen.
-          </p>
-        </Reveal>
-        <Reveal delay={0.25}>
-          <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <Button variant="primary" arrow className="px-8 py-4 text-base">
-              Get Started
-            </Button>
-            <Button
-              variant="secondary"
-              href="#story"
-              className="px-8 py-4 text-base"
-            >
-              Re-read the story
-            </Button>
-          </div>
-        </Reveal>
-        <Reveal delay={0.35}>
-          <p className="mt-8 text-xs uppercase tracking-[0.24em] text-[#9db3b1]">
-            Built for modern educational institutions
-          </p>
-        </Reveal>
+      <div className="relative z-10 mx-auto grid w-full max-w-7xl items-center gap-10 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
+        <div className="max-w-[42rem]">
+          <SplitLetters
+            text="BEGIN"
+            className="text-[11px] font-bold uppercase tracking-[0.5em] text-[#0c7c7c]"
+            stagger={0.05}
+          />
+          <h2 className="mt-6 font-bold leading-[0.94] tracking-[-0.05em] text-[#1a2b2b] text-[clamp(2.5rem,9vw,3.8rem)] md:text-[clamp(3.25rem,5vw,4.8rem)]">
+            <span className="block">Ready to modernize</span>
+            <span className="block text-[#0fa3a3]">your campus?</span>
+          </h2>
+          <Reveal delay={0.15}>
+            <p className="mt-6 max-w-xl text-base leading-relaxed text-[#6b7f7e] md:text-lg">
+              Bring attendance, academic workflows, and intelligent campus
+              tools together with Venthen.
+            </p>
+          </Reveal>
+          <Reveal delay={0.25}>
+            <div className="mt-10 flex flex-col gap-3 sm:flex-row">
+              <Button
+                variant="primary"
+                arrow
+                href="/sign-up"
+                className="px-8 py-4 text-base"
+              >
+                Get Started
+              </Button>
+              <Button
+                variant="secondary"
+                href="#features"
+                className="px-8 py-4 text-base"
+              >
+                Explore the platform
+              </Button>
+            </div>
+          </Reveal>
+          <Reveal delay={0.35}>
+            <p className="mt-8 text-xs uppercase tracking-[0.24em] text-[#9db3b1]">
+              Built for modern educational institutions
+            </p>
+          </Reveal>
+        </div>
       </div>
     </section>
   );
