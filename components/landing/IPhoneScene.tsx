@@ -213,7 +213,8 @@ function PhoneModel({
       rotation.rotation.z,
     ]);
     const targetCenterY =
-      size.height / 2 - (targetY * size.height) / viewport.height;
+      size.height / 2 -
+      (position.position.y * size.height) / viewport.height;
     const verticalMargin = isMobile ? size.height * 0.06 : 64;
     const bottomMargin = isMobile ? size.height * 0.06 : 32;
     const safeHeight =

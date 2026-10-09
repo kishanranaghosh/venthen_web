@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
-import { SplitLetters, MaskedLines, Reveal, DriftWord, CountUp, EASE } from "./editorial";
+import { SplitLetters, MaskedLines, Reveal, DriftWord, CountUp } from "./editorial";
 import { Button } from "@/components/ui/primitives";
 
 /* Full-viewport transitional word */
